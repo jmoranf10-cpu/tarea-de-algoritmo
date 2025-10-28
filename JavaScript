@@ -1,4 +1,358 @@
+//TAREA 2
+///Objetivo general
+//Aplicar estructuras de programación para resolver problemas con números, cadenas y listas.//
+
 const frase = "La tecnología avanza";
 const numeroDeCaracteres = frase.length;
 
 console.log(`La frase tiene ${numeroDeCaracteres} caracteres.`);
+// ejercicio 2
+const titulo = "Programación avanzada";
+const vocalBuscada = "a";
+let contador = 0;
+
+// Convertimos el título a minúsculas para asegurar que contamos tanto 'a' como 'A'
+const tituloMinusculas = titulo.toLowerCase();
+
+// Recorremos cada letra del título
+for (let i = 0; i < tituloMinusculas.length; i++) {
+  // Si la letra actual es igual a la vocal que buscamos
+  if (tituloMinusculas[i] === vocalBuscada) {
+    contador++; // Aumentamos el contador en 1
+  }
+}
+
+console.log(`La vocal '${vocalBuscada}' aparece ${contador} veces.`);
+//ejercicio 3
+const producto = "Laptop";
+let productoInvertido = "";
+
+// El bucle empieza en el último caracter y va retrocediendo hasta el primero
+for (let i = producto.length - 1; i >= 0; i--) {
+  // En cada paso, se añade el caracter actual al final del nuevo string
+  productoInvertido += producto[i];
+}
+
+console.log(productoInvertido);
+//ejercicio 4
+const ciudad1 = "Milagro";
+const ciudad2 = "Guayaquil";
+
+// Comparamos la longitud de ambas cadenas
+if (ciudad2.length > ciudad1.length) {
+  console.log(`La palabra '${ciudad2}' tiene más letras.`);
+} else if (ciudad1.length > ciudad2.length) {
+  console.log(`La palabra '${ciudad1}' tiene más letras.`);
+} else {
+  console.log("Ambas palabras tienen la misma cantidad de letras.");
+}
+//ejercicio 5
+const cargo = "Director General Académico";
+const palabras = cargo.split(' '); // ["Director", "General", "Académico"]
+let iniciales = ""; // Se inicia una cadena vacía para guardar el resultado
+
+// Recorremos el arreglo de palabras
+for (let i = 0; i < palabras.length; i++) {
+  const palabraActual = palabras[i];
+  const letraInicial = palabraActual[0]; // Obtenemos la primera letra
+
+  iniciales += letraInicial; // Añadimos la letra a nuestro resultado
+
+  // Añadimos un punto solo si NO es la última palabra
+  if (i < palabras.length - 1) {
+    iniciales += ".";
+  }
+}
+
+console.log(iniciales);
+//Bloque 2 (versión con Arreglos del bloque1)
+const frases = [
+  "La tecnología avanza",
+  "Innovar para crecer",
+  "Calidad garantizada"
+];
+
+// We use a for...of loop to go through each phrase in the array.
+for (const frase of frases) {
+  // We print the phrase and its character count using the .length property.
+  console.log(`"${frase}" → ${frase.length} caracteres`);
+}
+//ejer 2
+const titulos = [
+  "Programación avanzada",
+  "Desarrollo web",
+  "Análisis de datos"
+];
+const vocal = 'a';
+
+// Loop through each title in the array
+for (const titulo of titulos) {
+  // To count case-insensitively (both 'a' and 'A'), we convert the title to lowercase.
+  // Then, we split the string by the vowel. The number of occurrences is the
+  // number of resulting array elements minus one.
+  const contador = titulo.toLowerCase().split(vocal).length - 1;
+
+  // Determine the correct word for the output ("vez" or "veces")
+  const veces = (contador === 1) ? 'vez' : 'veces';
+
+  // Print the final, formatted string
+  console.log(`"${titulo}" → ${contador} ${veces} la '${vocal}'`);
+}
+//ejer 3
+const productos = ["Laptop", "Celular", "Tablet"];
+
+productos.forEach(producto => {
+  const invertido = producto.split('').reverse().join('');
+  console.log(`"${producto}" → "${invertido}"`);
+});
+//ejer 4
+const ciudades = ["Milagro", "Guayaquil", "Quito", "Cuenca"];
+
+let ciudadMasLarga = ""; // Para guardar la ciudad con el nombre más largo
+
+// Recorremos el arreglo para comparar
+for (let i = 0; i < ciudades.length; i++) {
+  if (ciudades[i].length > ciudadMasLarga.length) {
+    ciudadMasLarga = ciudades[i];
+  }
+}
+
+// Mostramos el resultado
+console.log(`La ciudad con más letras es '${ciudadMasLarga}' (${ciudadMasLarga.length} letras).`);
+//ejer 5
+const cargos = ["Director General Académico", "Jefe de Laboratorio", "Asistente Administrativo"];
+
+cargos.forEach(cargo => {
+  // 1. Divide el string en un arreglo de palabras
+  const palabras = cargo.split(' ');
+  
+  // 2. Extrae la primera letra de cada palabra y le agrega un punto
+  const iniciales = palabras.map(palabra => palabra[0] + '.').join('');
+  
+  // 3. Muestra el resultado
+  console.log(`"${cargo}" → ${iniciales}`);
+});
+//Bloque 3: Ejercicios Individuales con Ciclos
+// Entrada de calificaciones
+const notas = [65, 80, 90, 50, 75];
+let suma = 0;
+let contador = 0;
+
+// Recorrer cada nota para evaluarla
+for (let i = 0; i < notas.length; i++) {
+  if (notas[i] >= 70) {
+    suma = suma + notas[i]; // Acumular la nota
+    contador = contador + 1;  // Incrementar el contador
+  }
+}
+
+// Calcular el promedio
+const promedio = suma / contador;
+
+// Mostrar el resultado formateado
+console.log(`Promedio de notas ≥ 70: ${promedio.toFixed(2)}`);
+//ejer 2
+// Entrada de datos
+const valores = [3, -5, 0, 7, -1, -8];
+let contadorNegativos = 0; // Se inicializa el contador en 0
+
+// Se recorre el arreglo de valores
+for (let i = 0; i < valores.length; i++) {
+  // Se comprueba si el número actual es menor a 0
+  if (valores[i] < 0) {
+    contadorNegativos++; // Si es negativo, se incrementa el contador
+  }
+}
+
+// Se muestra el resultado final
+console.log(`Cantidad de negativos: ${contadorNegativos}`);
+//ejer 3
+// Entrada de datos
+const edades = [17, 20, 35, 15, 18];
+
+// Acumuladores y contadores para cada grupo
+let sumaMayores = 0;
+let contadorMayores = 0;
+let sumaMenores = 0;
+let contadorMenores = 0;
+
+// Recorremos la lista de edades
+for (let i = 0; i < edades.length; i++) {
+  if (edades[i] >= 18) {
+    // Si es mayor de edad
+    sumaMayores += edades[i];
+    contadorMayores++;
+  } else {
+    // Si es menor de edad
+    sumaMenores += edades[i];
+    contadorMenores++;
+  }
+}
+
+// Calculamos los promedios
+const promedioMayores = sumaMayores / contadorMayores;
+const promedioMenores = sumaMenores / contadorMenores;
+
+// Mostramos los resultados
+console.log(`Promedio de mayores de edad: ${promedioMayores.toFixed(2)}`);
+console.log(`Promedio de menores de edad: ${promedioMenores.toFixed(2)}`);
+//ejer 4
+// Número de entrada
+const numero = 4;
+
+console.log(`Tabla del ${numero}:`);
+
+// Bucle que se repite del 1 al 10
+for (let i = 1; i <= 10; i++) {
+  // Calcula el producto en cada paso
+  const resultado = numero * i;
+  
+  // Muestra la línea de la tabla de multiplicar
+  console.log(`${numero} × ${i} = ${resultado}`);
+}
+//ejer 5
+// Entrada de datos
+const valores = [2, 5, 8, 9, 4, 7];
+
+// Acumuladores y contadores para cada grupo
+let sumaPares = 0;
+let contadorPares = 0;
+let sumaImpares = 0;
+let contadorImpares = 0;
+
+// Recorremos la lista de valores
+for (let i = 0; i < valores.length; i++) {
+  // Verificamos si el número es par usando el operador módulo (%)
+  if (valores[i] % 2 === 0) {
+    sumaPares += valores[i];
+    contadorPares++;
+  } else {
+    sumaImpares += valores[i];
+    contadorImpares++;
+  }
+}
+
+// Calculamos los promedios
+const promedioPares = sumaPares / contadorPares;
+const promedioImpares = sumaImpares / contadorImpares;
+
+// Mostramos los resultados
+console.log(`Promedio de pares: ${promedioPares.toFixed(2)}`);
+console.log(`Promedio de impares: ${promedioImpares.toFixed(2)}`);
+//Bloque 4: Versión con Arreglos (versión con arreglos del bloque 3)
+// Entrada de datos
+const calificaciones = [65, 80, 90, 50, 75];
+
+let suma = 0;
+let contador = 0;
+
+// Recorrer la lista para evaluar cada calificación
+for (let i = 0; i < calificaciones.length; i++) {
+  if (calificaciones[i] >= 70) {
+    suma += calificaciones[i]; // Acumula la calificación
+    contador++;               // Incrementa el contador
+  }
+}
+
+// Calcula el promedio solo si se encontraron notas válidas
+let promedio = 0;
+if (contador > 0) {
+  promedio = suma / contador;
+}
+
+// Muestra el resultado final formateado a dos decimales
+console.log(`Promedio de calificaciones ≥ 70: ${promedio.toFixed(2)}`);
+//ejer 2
+// Entrada de datos
+const numeros = [3, -5, 0, 7, -1, -8];
+let contadorNegativos = 0; // Inicializa el contador en 0
+
+// Recorre cada elemento de la lista
+for (let i = 0; i < numeros.length; i++) {
+  // Comprueba si el número actual es menor que 0
+  if (numeros[i] < 0) {
+    contadorNegativos++; // Si es negativo, incrementa el contador
+  }
+}
+
+// Muestra el resultado final
+console.log(`Cantidad de números negativos: ${contadorNegativos}`);
+//ejer 3
+// Entrada de datos
+const edades = [17, 20, 35, 15, 18];
+
+// Acumuladores y contadores para cada grupo
+let sumaMayores = 0;
+let contadorMayores = 0;
+let sumaMenores = 0;
+let contadorMenores = 0;
+
+// Recorrer la lista de edades
+for (let i = 0; i < edades.length; i++) {
+  if (edades[i] >= 18) {
+    // Si es mayor de edad
+    sumaMayores += edades[i];
+    contadorMayores++;
+  } else {
+    // Si es menor de edad
+    sumaMenores += edades[i];
+    contadorMenores++;
+  }
+}
+
+// Calcular los promedios
+const promedioMayores = sumaMayores / contadorMayores;
+const promedioMenores = sumaMenores / contadorMenores;
+
+// Mostrar los resultados formateados
+console.log(`Promedio de mayores de edad: ${promedioMayores.toFixed(2)}`);
+console.log(`Promedio de menores de edad: ${promedioMenores.toFixed(2)}`);
+//ejer 4
+// Entrada de datos
+const numeros = [3, 5];
+
+// 1. Ciclo externo para recorrer la lista [3, 5]
+for (let i = 0; i < numeros.length; i++) {
+  const numeroActual = numeros[i];
+  let tabla = []; // Arreglo para guardar los resultados de la tabla
+
+  console.log(`\nTabla del ${numeroActual}:`);
+
+  // 2. Ciclo interno para multiplicar del 1 al 10
+  for (let j = 1; j <= 10; j++) {
+    const resultado = numeroActual * j;
+    tabla.push(resultado); // Agrega el resultado a la lista
+  }
+
+  // 3. Muestra la tabla completa
+  console.log(tabla.join(', '));
+}
+//ejer 5
+// Entrada de datos
+const numeros = [2, 5, 8, 9, 4, 7];
+
+// Acumuladores y contadores
+let sumaPares = 0;
+let contadorPares = 0;
+let sumaImpares = 0;
+let contadorImpares = 0;
+
+// Recorrer la lista para clasificar cada número
+for (let i = 0; i < numeros.length; i++) {
+  // Se usa el operador módulo (%) para ver si el número es par
+  if (numeros[i] % 2 === 0) {
+    sumaPares += numeros[i];
+    contadorPares++;
+  } else {
+    sumaImpares += numeros[i];
+    contadorImpares++;
+  }
+}
+
+// Calcular promedios
+const promedioPares = sumaPares / contadorPares;
+const promedioImpares = sumaImpares / contadorImpares;
+
+// Mostrar los resultados
+console.log(`Promedio de pares: ${promedioPares.toFixed(2)}`);
+console.log(`Promedio de impares: ${promedioImpares.toFixed(2)}`);
